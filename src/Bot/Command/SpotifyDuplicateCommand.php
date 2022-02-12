@@ -38,16 +38,16 @@ final class SpotifyDuplicateCommand extends SystemCommand
         try {
             $duplicateGuard->checkAndRegister($trackId, strval($message->getMessageId()));
 
-            return Request::sendMessage([
-                'chat_id' => $this->getMessage()->getChat()->getId(),
-                // TODO: Make replies configurable through commands
-                'text' => 'Very nice!',
-                'reply_to_message_id' => $this->getMessage()->getMessageId(),
-            ]);
+            return Request::emptyResponse();
         } catch (FoundDuplicateTrack $e) {
+            Request::deleteMessage([
+                'chat_id' => $message->getChat()->getId(),
+                'message_id' => $message->getMessageId(),
+            ]);
+
             return Request::sendMessage([
-                'chat_id' => $this->getMessage()->getChat()->getId(),
-                'text' => 'You dumbass!',
+                'chat_id' => $message->getChat()->getId(),
+                'text' => 'Got upvote by @' . $message->getFrom()->getUsername(),
                 'reply_to_message_id' => $e->getOriginalMessageId(),
             ]);
         }
