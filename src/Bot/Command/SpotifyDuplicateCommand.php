@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Lala\Zemusibot\Bot\Command;
 
+use GuzzleHttp\Client;
 use Lala\Zemusibot\Bot\Spotify\DuplicateGuard;
 use Lala\Zemusibot\Bot\Spotify\Exception\FoundDuplicateTrack;
 use Longman\TelegramBot\Commands\SystemCommand;
@@ -38,7 +39,22 @@ final class SpotifyDuplicateCommand extends SystemCommand
         try {
             $duplicateGuard->checkAndRegister($trackId, strval($message->getMessageId()));
 
-            return Request::emptyResponse();
+            try {
+                $data = self::fetchTrackData($trackId);
+                return Request::sendPhoto([
+                    'chat_id' => $message->getChat()->getId(),
+                    'photo' => $data['image'],
+                    'caption' => $data['title'] . PHP_EOL . $data['uri'],
+                    'reply_to_message_id' => $message->getMessageId(),
+                    'disable_notification' => true,
+                ]);
+            } catch (\Exception $e) {
+                return Request::sendMessage([
+                    'chat_id' => $message->getChat()->getId(),
+                    'text' => 'Could not fetch song preview. FFS! 😡',
+                    'reply_to_message_id' => $message->getMessageId(),
+                ]);
+            }
         } catch (FoundDuplicateTrack $e) {
             Request::deleteMessage([
                 'chat_id' => $message->getChat()->getId(),
@@ -52,4 +68,34 @@ final class SpotifyDuplicateCommand extends SystemCommand
             ]);
         }
     }
+
+    private static function fetchTrackData(string $trackId): array
+    {
+        $uri = sprintf('https://open.spotify.com/track/%s', $trackId);
+
+        $client = new Client();
+
+        $response = $client->get($uri);
+        $html = $response->getBody()->getContents();
+        if (str_starts_with($html, '<!DOCTYPE html>')) {
+            $html = substr($html, strlen('<!DOCTYPE html>'));
+        }
+
+        $dom = new \DOMDocument();
+        $dom->loadHTML($html, \LIBXML_NOWARNING | \LIBXML_NOERROR);
+        $xpath = new \DOMXPath($dom);
+
+        $title = $xpath->query('/html/head/title')->getIterator()->current();
+        assert($title instanceof \DOMElement);
+
+        $image = $xpath->query('/html/head/meta[@property="og:image"]')->getIterator()->current();
+        assert($image instanceof \DOMElement);
+
+        return [
+            'title' => (string)$title->textContent,
+            'image' => (string)$image->getAttribute('content'),
+            'uri' => $uri,
+        ];
+    }
+
 }
