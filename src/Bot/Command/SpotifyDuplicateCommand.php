@@ -57,6 +57,7 @@ final class SpotifyDuplicateCommand extends SystemCommand
                     'chat_id' => $message->getChat()->getId(),
                     'text' => 'Could not fetch song preview. FFS! 😡',
                     'reply_to_message_id' => $message->getMessageId(),
+                    'disable_notification' => true,
                 ]);
             }
         } catch (FoundDuplicateTrack $e) {
@@ -69,6 +70,7 @@ final class SpotifyDuplicateCommand extends SystemCommand
                 'chat_id' => $message->getChat()->getId(),
                 'text' => 'Got upvote by @' . $message->getFrom()->getUsername(),
                 'reply_to_message_id' => $e->getOriginalMessageId(),
+                'disable_notification' => true,
             ]);
         }
     }
