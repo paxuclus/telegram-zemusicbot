@@ -1,0 +1,27 @@
+{
+    "name": "lala/zemusibot",
+    "description": "telegram bot that checks for spotify duplicates",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Lala\\Zemusibot\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lars Lauger",
+            "email": "gh@lars.wtf"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "helhum/dotenv-connector": "^3.0",
+        "longman/telegram-bot": "^0.75.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "helhum/dotenv-connector": true
+        }
+    }
+}
