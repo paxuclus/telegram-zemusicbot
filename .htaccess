@@ -1,0 +1,3 @@
+RewriteEngine On
+
+RewriteRule (.*) src/Web/index.php
