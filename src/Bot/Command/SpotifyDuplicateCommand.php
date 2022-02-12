@@ -37,7 +37,11 @@ final class SpotifyDuplicateCommand extends SystemCommand
         $duplicateGuard = new DuplicateGuard();
 
         try {
-            $duplicateGuard->checkAndRegister($trackId, strval($message->getMessageId()));
+            $duplicateGuard->checkAndRegister(
+                (string)$message->getChat()->getId(),
+                $trackId,
+                strval($message->getMessageId())
+            );
 
             try {
                 $data = self::fetchTrackData($trackId);

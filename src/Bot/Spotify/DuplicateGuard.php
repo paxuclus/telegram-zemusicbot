@@ -8,23 +8,23 @@ use Lala\Zemusibot\Bot\Spotify\Exception\FoundDuplicateTrack;
 final class DuplicateGuard
 {
 
-    private const FILE_PATH = __DIR__ . '/../../../data/spotify_track_list';
+    private const FILE_PATH = __DIR__ . '/../../../data/spotify_track_list_%s';
 
     /**
      * @throws FoundDuplicateTrack
      */
-    public function checkAndRegister(string $trackId, string $messageId): void
+    public function checkAndRegister(string $chatId, string $trackId, string $messageId): void
     {
-        self::checkTrack($trackId);
-        self::addTrack($trackId, $messageId);
+        self::checkTrack($chatId, $trackId);
+        self::addTrack($chatId, $trackId, $messageId);
     }
 
     /**
      * @throws FoundDuplicateTrack
      */
-    private static function checkTrack(string $trackId): void
+    private static function checkTrack(string $chatId, string $trackId): void
     {
-        $contents = file_get_contents(self::FILE_PATH);
+        $contents = file_get_contents(self::getFilePath($chatId));
         if ($contents === false) {
             return;
         }
@@ -46,13 +46,18 @@ final class DuplicateGuard
         }
     }
 
-    private static function addTrack(string $trackId, string $messageId): void
+    private static function addTrack(string $chatId, string $trackId, string $messageId): void
     {
         file_put_contents(
-            self::FILE_PATH,
+            self::getFilePath($chatId),
             "{$trackId}\t{$messageId}" . PHP_EOL,
             FILE_APPEND
         );
+    }
+
+    private static function getFilePath(string $chatId): string
+    {
+        return sprintf(self::FILE_PATH, $chatId);
     }
 
 }
