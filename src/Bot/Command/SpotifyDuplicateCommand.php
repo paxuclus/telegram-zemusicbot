@@ -13,7 +13,7 @@ use Longman\TelegramBot\Request;
 final class SpotifyDuplicateCommand extends SystemCommand
 {
 
-    private const TRACK_PATTERN = '#https://open.spotify.com/track/(?P<trackId>[a-z0-9]+)\??#i';
+    private const TRACK_PATTERN = '#https://open\.spotify\.com/track/(?P<trackId>[a-z0-9]+)\??#i';
 
     protected $name = 'genericmessage';
     protected $description = 'Check for duplicate Spotify Links';
@@ -100,7 +100,7 @@ final class SpotifyDuplicateCommand extends SystemCommand
         return [
             'title' => (string)$title->textContent,
             'image' => (string)$image->getAttribute('content'),
-            'uri' => $uri,
+            'uri' => sprintf('%s?si=zemusibot', $uri),
         ];
     }
 
