@@ -6,7 +6,7 @@ ENV TELEGRAM_BOT_WEBHOOK_URL ''
 
 COPY . /usr/src/zemusibot
 
-ENV APACHE_DOCUMENT_ROOT /usr/src/zemusibot
+ENV APACHE_DOCUMENT_ROOT /usr/src/zemusibot/Web
 
 RUN a2enmod rewrite
 
