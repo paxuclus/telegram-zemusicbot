@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f36006495ad4c71f9e4251d793343217",
+    "content-hash": "c26e044b40d0672fc83ad39365dbc3cd",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -339,16 +339,16 @@
         },
         {
             "name": "longman/telegram-bot",
-            "version": "0.75.0",
+            "version": "0.80.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-telegram-bot/core.git",
-                "reference": "13879c499af126d9211751597fd2aaf7a1bcb094"
+                "reference": "94d770215c5c758bf2faba3ad96ad528d9d5a3d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-telegram-bot/core/zipball/13879c499af126d9211751597fd2aaf7a1bcb094",
-                "reference": "13879c499af126d9211751597fd2aaf7a1bcb094",
+                "url": "https://api.github.com/repos/php-telegram-bot/core/zipball/94d770215c5c758bf2faba3ad96ad528d9d5a3d8",
+                "reference": "94d770215c5c758bf2faba3ad96ad528d9d5a3d8",
                 "shasum": ""
             },
             "require": {
@@ -358,13 +358,13 @@
                 "ext-pdo": "*",
                 "guzzlehttp/guzzle": "^6.0|^7.0",
                 "php": "^7.3|^8.0",
-                "psr/log": "^1.1"
+                "psr/log": "^1.1|^2.0|^3.0"
             },
             "require-dev": {
                 "dms/phpunit-arraysubset-asserts": "^0.2",
                 "monolog/monolog": "^2.1",
                 "phpunit/phpunit": "^9.5",
-                "squizlabs/php_codesniffer": "^3.5"
+                "squizlabs/php_codesniffer": "^3.6"
             },
             "type": "library",
             "autoload": {
@@ -436,7 +436,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-29T05:36:01+00:00"
+            "time": "2022-11-09T19:09:30+00:00"
         },
         {
             "name": "psr/http-client",
@@ -600,30 +600,30 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.4",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
+                "reference": "fe5ea303b0887d5caefd3d431c3e61ad47037001"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
-                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/fe5ea303b0887d5caefd3d431c3e61ad47037001",
+                "reference": "fe5ea303b0887d5caefd3d431c3e61ad47037001",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=8.0.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Psr\\Log\\": "Psr/Log/"
+                    "Psr\\Log\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -644,9 +644,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/1.1.4"
+                "source": "https://github.com/php-fig/log/tree/3.0.0"
             },
-            "time": "2021-05-03T11:20:27+00:00"
+            "time": "2021-07-14T16:46:02+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
