@@ -57,6 +57,5 @@ jobs:
         with:
           context: '.'
           file: './Dockerfile'
-          target: 'zemusibot'
           push: true
           tags: zemusibot:latest,zemusibot:${{ github.sha }}
