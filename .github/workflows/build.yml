@@ -16,16 +16,16 @@ jobs:
       DOCKER_IMAGE: ghcr.io/nlx-lars/zemusibot
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@7c0b4c8c8ebed23eca9ec2802474895d105b11bc
+        uses: shivammathur/setup-php@baf9535ba58ae8ac3a7362d932ca85fc38621a5d
         with:
           php-version: ${{ env.PHP_VERSION }}
 
       - name: Check if composer.json exists
         id: check_files
-        uses: andstor/file-existence-action@87d74d4732ddb824259d80c8a508c0124bf1c673
+        uses: andstor/file-existence-action@20b4d2e596410855db8f9ca21e96fbe18e12930b
         with:
           files: 'composer.json'
 
@@ -36,7 +36,7 @@ jobs:
           echo "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Set up dependency caching for faster installs
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         if: steps.check_files.outputs.files_exists == 'true'
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
@@ -56,7 +56,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker Image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: '.'
           file: './Dockerfile'
