@@ -12,6 +12,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      DOCKER_IMAGE: ghcr.io/nlx-lars/zemusibot
+
     steps:
       - uses: actions/checkout@v2
 
@@ -58,4 +61,4 @@ jobs:
           context: '.'
           file: './Dockerfile'
           push: true
-          tags: zemusibot:latest,zemusibot:${{ github.sha }}
+          tags: ${{ env.DOCKER_IMAGE }}:latest,${{ env.DOCKER_IMAGE }}:${{ github.sha }}
