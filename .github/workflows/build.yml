@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DOCKER_IMAGE: ghcr.io/nlx-lars/zemusibot
+      DOCKER_IMAGE: ghcr.io/paxuclus/zemusibot
 
     steps:
       - uses: actions/checkout@v3
