@@ -13,7 +13,7 @@ use Longman\TelegramBot\Request;
 final class SpotifyDuplicateCommand extends SystemCommand
 {
 
-    private const TRACK_PATTERN = '#https://open\.spotify\.com/track/(?P<trackId>[a-z0-9]+)\??#i';
+    private const TRACK_PATTERN = '#https://open\.spotify\.com(/[^/]*)*/track/(?P<trackId>[a-z0-9]+)\??#i';
 
     protected $name = 'genericmessage';
     protected $description = 'Check for duplicate Spotify Links';
@@ -29,6 +29,7 @@ final class SpotifyDuplicateCommand extends SystemCommand
         }
 
         // https://open.spotify.com/track/0CSvdqfPR3Z3X3jGcaLBA6?si=d1043126ec964de5
+        // https://open.spotify.com/intl-de/track/5TnZyIgwlC81AJpRjqYhYJ?si=bc0b640ffc4a4267
         if (preg_match(self::TRACK_PATTERN, $text, $matches) !== 1) {
             return Request::emptyResponse();
         }
