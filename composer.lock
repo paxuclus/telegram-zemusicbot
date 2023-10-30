@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99032b0b4dc48f97a73eebded7521f28",
+    "content-hash": "6d5c7f3506702ea883a7eb968ff3bcf2",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -333,16 +333,16 @@
         },
         {
             "name": "longman/telegram-bot",
-            "version": "0.81.0",
+            "version": "0.82.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-telegram-bot/core.git",
-                "reference": "d9484af72a39e10913a60d2c6c9ceffb61d624d1"
+                "reference": "26433b3d29f31c7760ba881490f84640ebef2652"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-telegram-bot/core/zipball/d9484af72a39e10913a60d2c6c9ceffb61d624d1",
-                "reference": "d9484af72a39e10913a60d2c6c9ceffb61d624d1",
+                "url": "https://api.github.com/repos/php-telegram-bot/core/zipball/26433b3d29f31c7760ba881490f84640ebef2652",
+                "reference": "26433b3d29f31c7760ba881490f84640ebef2652",
                 "shasum": ""
             },
             "require": {
@@ -435,20 +435,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-27T15:36:06+00:00"
+            "time": "2023-10-26T20:16:16+00:00"
         },
         {
             "name": "psr/http-client",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-client.git",
-                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31"
+                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-client/zipball/0955afe48220520692d2d09f7ab7e0f93ffd6a31",
-                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90",
+                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90",
                 "shasum": ""
             },
             "require": {
@@ -485,9 +485,9 @@
                 "psr-18"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-client/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-client"
             },
-            "time": "2023-04-10T20:12:12+00:00"
+            "time": "2023-09-23T14:17:50+00:00"
         },
         {
             "name": "psr/http-factory",

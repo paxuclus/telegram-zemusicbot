@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "longman/telegram-bot": "^0.81.0",
+        "longman/telegram-bot": "^0.82.0",
         "guzzlehttp/guzzle": "^7.4",
         "ext-dom": "*",
         "ext-libxml": "*"
